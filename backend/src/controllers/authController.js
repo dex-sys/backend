@@ -66,7 +66,7 @@ async function sendMail(email, token) {
                 </head>
                 <body>
                     <div class="container">
-                        <img src="https://via.placeholder.com/150" alt="Logo" class="logo">
+                        <img src="cid:logo" alt="Logo" class="logo">
                         <h1>¿Olvidaste tu contraseña?</h1>
                         <p>No te preocupes, haz clic en el botón de abajo para restablecer tu contraseña.</p>
                         <a href="${resetLink}" class="button">Restablecer contraseña</a>
@@ -74,6 +74,13 @@ async function sendMail(email, token) {
                     </div>
                 </body>
                </html>`,
+        attachments: [
+            {
+                filename: 'logo.png',
+                path: path.join(__dirname, '../assets/logo.png'),
+                cid: 'logo',
+            }
+        ]
         });
         return info;
     } catch (error) {
